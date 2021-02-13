@@ -24,14 +24,19 @@
 
 <h2>New book</h2>
 
-<% if flash.now[:error] %>
-  <p><%= flash.now[:error] %></p>
-<% end %>
-
 <%= form_for(@book) do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Body</h4>
-  <%= f.text_area :body %>
-  <p><%= f.submit 'Create Book' %></p>
+		 <% if @book.errors.any? %>
+		 	<h4 class="error-title">!入力した内容にエラーが<%= @book.errors.count %>件あります!</h4>
+		 	<ul>
+				<% @book.errors.full_messages.each do |message|%>
+				 		<li class="error-info"><%= message %></li>
+				<% end %>
+		 	</ul>
+	<% end %>
+
+<h4>title</h4>
+<%= f.text_field :title %>
+<h4>body</h4>
+<%= f.text_area :body %>
+<%= f.submit "Create Book" %>
 <% end %>
