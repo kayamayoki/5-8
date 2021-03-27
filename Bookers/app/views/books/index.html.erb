@@ -26,7 +26,7 @@
 
 <%= form_for(@book) do |f| %>
 		 <% if @book.errors.any? %>
-		 	<h4 class="error-title">!入力した内容にエラーが<%= @book.errors.count %>件あります!</h4>
+#		 	<h4 class="error-title">!入力した内容にエラーが<%= @book.errors.count %>件あります!</h4>
 		 	<ul>
 				<% @book.errors.full_messages.each do |message|%>
 				 		<li class="error-info"><%= message %></li>
